@@ -1,0 +1,16 @@
+中山大学本科毕业论文非官方模版0.0.1
+
+维护者为陈颂光(1m02math@126.com)
+
+主要文件
+README	本文件
+./main.tex	主文件
+./sysuthesis.cls	文类文件
+./main.pdf	使用说明(使用XeLaTeX编译main.tex而得)
+./patch/algorithm2e.sty	对algorithm2e宏包中同名文件的修改以支持中文
+./patch/ctex-xecjk-adobefonts.def	对ctex宏包中同名文件的修改以支持fandol字体
+./image/logo.png	校徽
+其它文件要么由于许可证中完整性条款而必须包含，要么只是测试用图片。
+
+声明
+这是一个尽可能符合《中山大学本科生毕业论文(设计)写作与印制规范》的LaTeX 模版，维护者不会以任何方式限制它的自由使用。然而，无法保证它完全符合学校的相关要求，甚至不保证它可以正常编译。对于使用此模版造成的任何后果，作者不负有任何责任。
