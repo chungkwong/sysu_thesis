@@ -1,26 +1,26 @@
-%这是中山大学本科毕业论文非官方模版0.0.1的一部分
+%这是中山大学本科毕业论文非官方模版0.0.2的一部分
 %维护者为陈颂光(1m02math@126.com)
 %任何人可以自由使用本文件
 %然而，无法保证它完全符合学校的相关要求，甚至不保证它可以正常编译
 %对于使用此模版造成的任何后果，维护者不负有任何责任
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{sysuthesis}
-	[2015/02/27 v0.0.1 Sun Yat-Sen University undergraduate thesis document class]
+	[2015/03/26 v0.0.2 Sun Yat-Sen University undergraduate thesis document class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
-\LoadClass[adobefonts,a4paper,openright,cs4size,fancyhdr]{ctexbook}%在windows编译且希望使用微软的字体时请把adobefonts改为winfonts
+\LoadClass[adobefonts,a4paper,openright,cs4size,fancyhdr,hyperref]{ctexbook}%在windows编译且希望使用微软的字体时请把adobefonts改为winfonts
 \RequirePackage{tocloft}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
 \RequirePackage{amsmath,amssymb,amsthm}
-\RequirePackage{listings}
-\RequirePackage{subfig}
+\RequirePackage{listings}%不需要代码时可把这行去掉
+\RequirePackage{subfig}%不需要把多个图放到一个浮动体时可把这行去掉
 \RequirePackage{longtable}
 \RequirePackage{endnotes}
 \RequirePackage[chinese,onelanguage,noline,noend,linesnumbered,algochapter]{algorithm2e}%不需要描述算法时把这行去掉
-\RequirePackage[colorlinks=true,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black,CJKbookmarks=true,xetex=true]{hyperref}
 \AtBeginDocument{\hypersetup{
+	colorlinks=true,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black,CJKbookmarks=true,xetex=true,
 	pdftitle={\@title},
 	pdfauthor={\@author},
 	pdfkeywords={\@keywords},
@@ -71,18 +71,31 @@
 \newcommand\majorgrade[1]{\def\@majorgrade{#1}}
 \newcommand\schoolcomment[1]{\def\@schoolcomment{#1}}
 \newcommand\schoolgrade[1]{\def\@schoolgrade{#1}}
+\newcommand\openingrep[1]{\def\@openingrep{#1}}
+\newcommand\cabstract[1]{\def\@cabstract{#1}}
+\newcommand\eabstract[1]{\def\@eabstract{#1}}
 
-\newtheorem{theorem}{{定理}}
-\newtheorem{proposition}{{命题}}
-\newtheorem{lemma}{{引理}}
-\newtheorem{corollary}{{推论}}[theorem]
-\newtheorem{definition}{{定义}}
-\newtheorem{eg}{例}
+\newtheorem{theorem}{{定理}}[chapter]
+\newtheorem{proposition}{{命题}}[chapter]
+\newtheorem{lemma}{{引理}}[chapter]
+\newtheorem{corollary}{{推论}}[chapter]
+\newtheorem{definition}{{定义}}[chapter]
+\newtheorem{eg}{例}[chapter]
 \renewcommand{\listfigurename}{插图目录}
 \renewcommand{\listtablename}{表格目录}
-\renewcommand{\proofname}{证明}
+\renewcommand{\proofname}{{\heiti 证明}}
 \renewcommand{\notesname}{{\zihao{-5}\heiti 注释：}}
 \renewcommand{\bibname}{参考文献：}
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}
+  \normalfont \topsep6\p@\@plus6\p@\relax
+  \trivlist
+  \item[\hskip\labelsep
+        \itshape
+    #1]\ignorespaces
+}{
+  \popQED\endtrivlist\@endpefalse
+}
 
 \xeCJKsetcharclass{`①}{`⑩}{1}
 %\makeatletter
@@ -115,7 +128,7 @@
 	\end{titlepage}
 }
 
-\newenvironment{openingreport}{
+\newcommand\openingreport{
 	\CTEXsetup[titleformat={\zihao{-3}\fangsong\bfseries}]{chapter}
 	\chapter*{毕业论文（设计）开题报告}
 	\zihao{-4}\songti
@@ -131,11 +144,11 @@
 		论文(设计)题目:\@title
 		\\\hline
 		(简述选题的目的、思路、方法、相关支持条件及进度安排等)
-}{
-	\\\hline
-	指导教师意见:\\\@openingopinion
-	1、同意开题( ) 2、修改后开题( ) 3、重新开题( )\\\rule{0cm}{\baselineskip}\\
-	指导教师签名:\hfill 年\qquad 月\qquad 日\\\rule{0cm}{\baselineskip}\\
+		\@openingrep	
+		\\\hline
+		指导教师意见:\\\@openingopinion
+		1、同意开题( ) 2、修改后开题( ) 3、重新开题( )\\\rule{0cm}{\baselineskip}\\
+		指导教师签名:\hfill 年\qquad 月\qquad 日\\\rule{0cm}{\baselineskip}\\
 	\end{longtable}
 }
 
@@ -156,27 +169,27 @@
 		\multicolumn{2}{|l|}{指导教师分阶段检查论文的进展情况（要求过程检查记录不少于3次）：}\\
 		\multicolumn{2}{|l|}{\heiti 第1次检查}\\
 		\multicolumn{2}{|l|}{学生总结：}\\
-		\multicolumn{2}{|l|}{\@firstcheck}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@firstcheck}}\\
 		\multicolumn{2}{|l|}{指导教师意见：}\\
-		\multicolumn{2}{|l|}{\@firstopinion}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@firstopinion}}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
 		\multicolumn{2}{|l|}{\heiti 第2次检查}\\
 		\multicolumn{2}{|l|}{学生总结：}\\
-		\multicolumn{2}{|l|}{\@secondcheck}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@secondcheck}}\\
 		\multicolumn{2}{|l|}{指导教师意见：}\\
-		\multicolumn{2}{|l|}{\@secondopinion}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@secondopinion}}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
 		\multicolumn{2}{|l|}{\heiti 第3次检查}\\
 		\multicolumn{2}{|l|}{学生总结：}\\
-		\multicolumn{2}{|l|}{\@thirdcheck}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@thirdcheck}}\\
 		\multicolumn{2}{|l|}{指导教师意见：}\\
-		\multicolumn{2}{|l|}{\@thirdopinion}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@thirdopinion}}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
 		\multicolumn{2}{|l|}{\heiti 第4次检查}\\
 		\multicolumn{2}{|l|}{学生总结：}\\
-		\multicolumn{2}{|l|}{\@forthcheck}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@forthcheck}}\\
 		\multicolumn{2}{|l|}{指导教师意见：}\\
-		\multicolumn{2}{|l|}{\@forthopinion}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@forthopinion}}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
 		\multicolumn{2}{|l|}{学生签名：\hfill 年\qquad 月\qquad 日}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
@@ -198,16 +211,17 @@
 	\CTEXsetup[titleformat={\zihao{-3}\fangsong\bfseries}]{chapter}
 	\chapter*{毕业论文(设计)答辩情况登记表}
 	\zihao{-4}\songti
-	\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|}
 	\hline
 	答辩人 &  \@author & 专业 & \@major\\\hline
 	论文（设计）题目 & \multicolumn{3}{c|}{\@title}\\\hline
 	答辩小组成员 & \multicolumn{3}{c|}{}\\\hline
 	\multicolumn{4}{|l|}{答辩记录：}\\
 	\multicolumn{4}{|l|}{\rule{0cm}{12cm}}\\
+	\multicolumn{4}{|p{\textwidth}|}{}\\
 	\multicolumn{4}{|l|}{记录人签名：\hspace{\fill} 年\qquad 月\qquad 日}
 	\\\hline
-	\end{tabular*}
+	\end{tabular}
 }
 
 \newcommand\disclaim{
@@ -219,22 +233,22 @@
 	\paragraph{}本人签名：\hfill 日期：\qquad\qquad\qquad\qquad
 }
 
-\newenvironment{cabstract}{
+\newcommand\makecabstract{
 	\CTEXsetup[titleformat={\zihao{5}\heiti}]{chapter}
 	\chapter*{摘要}
 	\zihao{5}
 	\kaishu
-}{
+	\@cabstract
 	\vspace{2\baselineskip}
 	\paragraph{\heiti［关键词］}\kaishu\@keywords
 }
 
-\newenvironment{eabstract}{
+\newcommand\makeeabstract{
 	\CTEXsetup[titleformat={\zihao{-4}\rmfamily\bfseries}]{chapter}
 	\chapter*{Abstract}
 	\zihao{-4}
 	\rmfamily
-}{
+	\@eabstract
 	\vspace{2\baselineskip}
 	\paragraph{\textbf{[Key Words]}}\@ekeywords
 }
@@ -286,6 +300,13 @@
 	}
 	\pagenumbering{roman}
 	\maketitle
+	\openingreport
+	\progresscheck
+	\record
+	\disclaim
+	\makecabstract
+	\makeeabstract
+	\CTEXsetup[titleformat={\zihao{3}\songti\bfseries}]{chapter}
 }
 
 \renewcommand\mainmatter{

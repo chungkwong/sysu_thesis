@@ -1,11 +1,14 @@
-中山大学本科毕业论文非官方模版0.0.1
+中山大学本科毕业论文非官方模版0.0.2
 
 维护者为陈颂光(1m02math@126.com)
 
 主要文件
 README	本文件
 ./main.tex	主文件
+./main.bib	参考文献文件
+./sysuthesis.bst	参考文献样式文件
 ./sysuthesis.cls	文类文件
+./makefile	用于自动化PDF文件生成的makefile文件
 ./main.pdf	使用说明(使用XeLaTeX编译main.tex而得)
 ./patch/algorithm2e.sty	对algorithm2e宏包中同名文件的修改以支持中文
 ./patch/ctex-xecjk-adobefonts.def	对ctex宏包中同名文件的修改以支持fandol字体

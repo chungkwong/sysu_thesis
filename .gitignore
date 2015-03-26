@@ -1,4 +1,6 @@
 main.aux
+main.bbl
+main.blg
 main.ent
 main.loa
 main.lof
@@ -11,3 +13,4 @@ main2.pdf
 missfont.log
 svn-commit.tmp
 sysuthesis.tar.gz
+中山大学本科毕业论文非官方LaTeX模版0.0.*.tar.gz

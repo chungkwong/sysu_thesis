@@ -1,5 +1,5 @@
 ﻿\documentclass{sysuthesis}
-%这是中山大学本科毕业论文非官方模版0.0.1的一部分
+%这是中山大学本科毕业论文非官方模版0.0.2的一部分
 %维护者为陈颂光(1m02math@126.com)
 %任何人可以自由使用本文件
 %然而，无法保证它完全符合学校的相关要求，甚至不保证它可以正常编译
@@ -33,32 +33,23 @@
 \majorgrade{\rule{0cm}{2\baselineskip}}%答辩小组或专业负责人给予的成绩评定
 \schoolcomment{\rule{0cm}{3\baselineskip}}%院系负责人意见
 \schoolgrade{\rule{0cm}{2\baselineskip}}%院系负责人给予的成绩评定
-
-\begin{document}
-
-\frontmatter
-\begin{openingreport}
+\openingrep{
 %接下来是开题报告内容
-\paragraph{}开题报告内容
-\end{openingreport}
-
-\progresscheck%毕业论文(设计)过程检查情况记录表
-\record%毕业论文(设计)答辩情况登记表
-\disclaim%学术诚信声明
-
-\begin{cabstract}
+\paragraph{}开题报告内容	
+}
+\cabstract{
 %摘要内容应概括地反映出本论文的主要内容,主要说明本论文的研究目的 、内容、方法、成果和结论。要突出本论文的创造性成果或新见解,不要与引言相混淆。语言力求精练、准确,以 300—500 字为宜。
 %接下来是中文摘要内容
 \paragraph{}中文摘要内容
-\end{cabstract}
-
-\begin{eabstract}
+}
+\eabstract{
 %英文摘要内容与中文摘要相同,以 250—400 个实词为宜。
 %接下来是英文摘要内容
 \paragraph{}Content of the abstract.
-\end{eabstract}
+}
+\begin{document}
 
-\CTEXsetup[titleformat={\zihao{3}\songti\bfseries}]{chapter}
+\frontmatter
 
 \cleardoublepage
 \tableofcontents%目录
@@ -110,11 +101,21 @@
 
 \begin{itemize}
 \item {\ttfamily main.tex}为主文件，毕业论文的内容应放在这个文件中。
+\item {\ttfamily main.bib}为参考文献记录。
+\item {\ttfamily sysuthesis.bst}为参考文献样式文件。
 \item {\ttfamily sysuthesis.cls}为文类文件，应与主文件放在相同的目录中。
 \item {\ttfamily image/logo.png}为用在封面的校徽。
 \end{itemize}
 
-\paragraph{}主文件{\ttfamily main.tex}基本上是自解释的。在正常使用时，只用按照源文件中注释在正确位置填写各种基本信息、开题报告内容和中英文摘要内容，然后把注释``现在开始正文''到注释``篇末注''之间部分替换为正文，再按照注释在正确位置加入参考文献、致谢和附录等。最后用{\ttfamily xelatex}编译即可。
+\paragraph{}主文件{\ttfamily main.tex}基本上是自解释的。在正常使用时，只用按照源文件中注释在正确位置填写各种基本信息、开题报告内容和中英文摘要内容，然后把注释``现在开始正文''到注释``篇末注''之间部分替换为正文，再按照注释在正确位置加入参考文献、致谢和附录等。最后用{\ttfamily xelatex}编译即可：
+
+\begin{lstlisting}[language=bash, keywordstyle=\color{blue}\bfseries, basicstyle=\ttfamily, breaklines=true, frame=shadowbox]
+xelatex main
+bibtex main
+xelatex main
+xelatex main
+\end{lstlisting}
+。当然也可以用{\ttfamily makefile}或用脚本简化编译过程。
 
 \section{配置}
 
@@ -155,6 +156,8 @@
 \end{lstlisting}。
 
 \paragraph{}如果想使用开源字体{\ttfamily Fandol}（假定已安装它），请把{\ttfamily ctex}宏包的文件{\ttfamily ctex-xecjk-adobefonts.def}（在我的系统中，它在{\ttfamily /usr/share/ texlive/texmf-dist/tex/latex/ctex/fontset/}）替换为本模版附带的同名文件。
+
+\paragraph{}关于参考文献的bib条目格式参考\texttt{main.bib}~\cite{article}\cite{book}\cite{phdthesis}\cite{inproc}\cite{masterthesis}\cite{manual}\cite{report}\cite{database}\cite{software}\cite{standard}\cite{newspaper}\cite{patent}。
 
 \chapter{写作时的注意事项}
 
@@ -298,7 +301,6 @@
 \paragraph{}此模版有以下已知局限性：
 
 \begin{itemize}
-\item 未支持以bibtex管理参考文献
 \item 篇末注只支持最多10个
 \item 有时用户可能要直接修改cls文件
 \item 遗留了一些格式化代码在tex文件
@@ -308,20 +310,10 @@
 %篇末注（非常抱歉只支持最多10个，在正文通过\endnote{}命令生成）
 \displayendnotes
 
-\begin{thebibliography}{99}
-\zihao{-5}\songti
 %参考文献是毕业设计(论文)不可缺少的组成部分,它反映毕业设计(论文)的取材来源、材料的广博程度和材料的可靠程度,也是作者对他人知识成果的承认和尊重。一份完整的参考文献可向读者提供一份有价值的信息资料,列入的文献应在 10 篇以上,其中外文文献在 2 篇以上。
-%以下是参考文献条目（非常抱歉未支持bibtex）
-\bibitem{journal} 作者. 文章题目[J]. 期刊名, 出版年份,卷号(期数):起止页码.
-\bibitem{book} 作者. 书名[M]. 版次. 出版地:出版单位,出版年份:起止页码.
-\bibitem{conferencepaper} 作者. 文章题目[A].主编.论文集名[C], 出版地:出版单位,出版年
-\bibitem{thesis} 作者. 论文题目[D].保存地:保存单位,年份.
-\bibitem{report} 报告者. 报告题目[R].报告地:报告会主办单位,报告年份.
-\bibitem{patent} 专利所有者. 专利名称:专利国别,专利号[P].发布日期.
-\bibitem{standard} 标准代号. 标准名称[S].出版地:出版单位,出版年份.
-\bibitem{newspaper} 作者. 文章题目[N].报纸名,出版日期(版次).
-\bibitem{eresource} 作者.文献题目[电子文献及载体类型标识].电子文献的可获取地址,发表或更新日期/引用日期(可以只选择一项).
-\end{thebibliography}
+\zihao{-5}\songti
+\bibliographystyle{sysuthesis}
+\bibliography{main}%假定bib文件为main.bib
 
 \appendix
 
@@ -357,7 +349,5 @@ $A / \simeq$ & 集合$A$关于等价关系$\simeq$的商集\\
 \end{longtable}
 
 \backmatter
-
-%\grading%成绩评定记录
 
 \end{document}
