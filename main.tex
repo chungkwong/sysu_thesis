@@ -35,17 +35,17 @@
 \schoolgrade{\rule{0cm}{2\baselineskip}}%院系负责人给予的成绩评定
 \openingrep{
 %接下来是开题报告内容
-\paragraph{}开题报告内容	
+开题报告内容	
 }
 \cabstract{
 %摘要内容应概括地反映出本论文的主要内容,主要说明本论文的研究目的 、内容、方法、成果和结论。要突出本论文的创造性成果或新见解,不要与引言相混淆。语言力求精练、准确,以 300—500 字为宜。
 %接下来是中文摘要内容
-\paragraph{}中文摘要内容
+中文摘要内容
 }
 \eabstract{
 %英文摘要内容与中文摘要相同,以 250—400 个实词为宜。
 %接下来是英文摘要内容
-\paragraph{}Content of the abstract.
+Content of the abstract.
 }
 \begin{document}
 
@@ -69,7 +69,7 @@
 
 \section{背景}
 
-\paragraph{} 众所周知，编写毕业论文的过程如算法\ref{algor:write}所示。
+ 众所周知，编写毕业论文的过程如算法\ref{algor:write}所示。
 
 \begin{algorithm}[H]
 \KwData{字符串}
@@ -87,17 +87,17 @@
 
 \section{国内外研究现状}
 
-\paragraph{}国内外众多高校的毕业论文都有官方或非官方\LaTeX 模版，让莘莘学子从繁琐的排版细节中解放出来，得以集中精力于研究和写作工作本身。 
+国内外众多高校的毕业论文都有官方或非官方\LaTeX 模版，让莘莘学子从繁琐的排版细节中解放出来，得以集中精力于研究和写作工作本身。 
 
 \section{本文工作}
 
-\paragraph{}我们建立了一个尽可能符合《中山大学本科生毕业论文(设计)写作与印制规范》的\LaTeX 模版，容许任何人自由使用，然而我们无法保证它是否完全符合学校的相关要求，甚至不保证它可以正常编译\endnote{反正我是可以正常编译。}。对于使用此模版造成的任何后果，本人不负有任何责任。
+我们建立了一个尽可能符合《中山大学本科生毕业论文(设计)写作与印制规范》的\LaTeX 模版，容许任何人自由使用，然而我们无法保证它是否完全符合学校的相关要求，甚至不保证它可以正常编译\endnote{反正我是可以正常编译。}。对于使用此模版造成的任何后果，本人不负有任何责任。
 
 \chapter{模版使用说明}
 
 \section{正常使用}
 
-\paragraph{}本模版主要组成部分有：
+本模版主要组成部分有：
 
 \begin{itemize}
 \item {\ttfamily main.tex}为主文件，毕业论文的内容应放在这个文件中。
@@ -107,7 +107,7 @@
 \item {\ttfamily image/logo.png}为用在封面的校徽。
 \end{itemize}
 
-\paragraph{}主文件{\ttfamily main.tex}基本上是自解释的。在正常使用时，只用按照源文件中注释在正确位置填写各种基本信息、开题报告内容和中英文摘要内容，然后把注释``现在开始正文''到注释``篇末注''之间部分替换为正文，再按照注释在正确位置加入参考文献、致谢和附录等。最后用{\ttfamily xelatex}编译即可：
+主文件{\ttfamily main.tex}基本上是自解释的。在正常使用时，只用按照源文件中注释在正确位置填写各种基本信息、开题报告内容和中英文摘要内容，然后把注释``现在开始正文''到注释``篇末注''之间部分替换为正文，再按照注释在正确位置加入参考文献、致谢和附录等。最后用{\ttfamily xelatex}编译即可：
 
 \begin{lstlisting}[language=bash, keywordstyle=\color{blue}\bfseries, basicstyle=\ttfamily, breaklines=true, frame=shadowbox]
 xelatex main
@@ -119,7 +119,7 @@ xelatex main
 
 \section{配置}
 
-\paragraph{}在使用本模版前，请先保证已安装以下宏包：
+在使用本模版前，请先保证已安装以下宏包：
 
 \begin{itemize}
 \item {\ttfamily ctex}
@@ -134,9 +134,10 @@ xelatex main
 \item {\ttfamily endnotes}
 \item {\ttfamily algorithm2e}
 \item {\ttfamily hyperref}
+\item {\ttfamily placeins}
 \end{itemize}
 
-\paragraph{}为了让{\ttfamily algorithm2e}宏包支持中文，请把该宏包的文件{\ttfamily algorithm2e.sty}（在我的系统中，它在{\ttfamily /usr/share/texlive/texmf-dist/tex/latex/algorithm2e/}）替换为本模版附带的同名文件。不需要描述算法时，可以在{\ttfamily sysuthesis.cls}中去掉以下代码
+为了让{\ttfamily algorithm2e}宏包支持中文，请把该宏包的文件{\ttfamily algorithm2e.sty}（在我的系统中，它在{\ttfamily /usr/share/texlive/texmf-dist/tex/latex/algorithm2e/}）替换为本模版附带的同名文件。不需要描述算法时，可以在{\ttfamily sysuthesis.cls}中去掉以下代码
 \begin{lstlisting}[language=TeX, keywordstyle=\color{blue}\bfseries, basicstyle=\ttfamily, breaklines=true, frame=shadowbox]
 \RequirePackage[chinese,onelanguage,noline,noend,linesnumbered]{algorithm2e}
 \end{lstlisting}
@@ -146,7 +147,7 @@ xelatex main
 \end{lstlisting}
 （源文件有注释提示）。
 
-\paragraph{}如果在windows编译且希望使用微软的字体时，请把{\ttfamily sysuthesis.cls}中以下代码
+如果在windows编译且希望使用微软的字体时，请把{\ttfamily sysuthesis.cls}中以下代码
 \begin{lstlisting}[language=TeX, keywordstyle=\color{blue}\bfseries, basicstyle=\ttfamily, breaklines=true, frame=shadowbox]
 \LoadClass[adobefonts,a4paper,openright,cs4size,fancyhdr]{ctexbook}[2010/01/22]
 \end{lstlisting}
@@ -155,17 +156,17 @@ xelatex main
 \LoadClass[winfonts,a4paper,openright,cs4size,fancyhdr]{ctexbook}[2010/01/22]
 \end{lstlisting}。
 
-\paragraph{}如果想使用开源字体{\ttfamily Fandol}（假定已安装它），请把{\ttfamily ctex}宏包的文件{\ttfamily ctex-xecjk-adobefonts.def}（在我的系统中，它在{\ttfamily /usr/share/ texlive/texmf-dist/tex/latex/ctex/fontset/}）替换为本模版附带的同名文件。
+如果想使用开源字体{\ttfamily Fandol}（假定已安装它），请把{\ttfamily ctex}宏包的文件{\ttfamily ctex-xecjk-adobefonts.def}（在我的系统中，它在{\ttfamily /usr/share/ texlive/texmf-dist/tex/latex/ctex/fontset/}）替换为本模版附带的同名文件。
 
-\paragraph{}关于参考文献的bib条目格式参考\texttt{main.bib}~\cite{article}\cite{book}\cite{phdthesis}\cite{inproc}\cite{masterthesis}\cite{manual}\cite{report}\cite{database}\cite{software}\cite{standard}\cite{newspaper}\cite{patent}。
+关于参考文献的bib条目格式参考\texttt{main.bib}~\cite{article}\cite{book}\cite{phdthesis}\cite{inproc}\cite{masterthesis}\cite{manual}\cite{report}\cite{database}\cite{software}\cite{standard}\cite{newspaper}\cite{patent}。
 
 \chapter{写作时的注意事项}
 
-\paragraph{}本章列出一些本模板未能规范也不太适合以注释形形式写在源文件的要求，请使用者注意。
+本章列出一些本模板未能规范也不太适合以注释形形式写在源文件的要求，请使用者注意。
 
 \section{毕业论文的撰写内容与要求}
 
-\paragraph{}正文一般包括以下几个方面:
+正文一般包括以下几个方面:
 
 \begin{enumerate}
 \item 引言或背景\\
@@ -184,11 +185,11 @@ xelatex main
 
 \section{毕业论文的撰写格式要求}
 
-\paragraph{}除有特殊要求的专业外,毕业论文正文一般不少于 5000 字。各专业可根据需要确定具体的文字和字数要求,并报教务处备案。
+除有特殊要求的专业外,毕业论文正文一般不少于 5000 字。各专业可根据需要确定具体的文字和字数要求,并报教务处备案。
 
-\paragraph{}正文各部分的标题应简明扼要,不使用标点符号。
+正文各部分的标题应简明扼要,不使用标点符号。
 
-\paragraph{}名词术语的要求：
+名词术语的要求：
 
 \begin{itemize}
 \item 科学技术名词术语尽量采用全国自然科学名词审定委员会公布的规范词或国家标准、部标准中规定的名称,尚未统一规定或叫法有争议的名词术语,可采用惯用的名称。
@@ -196,7 +197,7 @@ xelatex main
 \item 外国人名一般采用英文原名,可不译成中文,英文人名按姓前名后的原则书写,如:CRAY P,不可将外国人姓名中的名部分漏写,例如:不能只写CRAY, 应写成 CRAY P。一般很熟知的外国人名(如牛顿、爱因斯坦、达尔文、马克思等)可按通常标准译法写译名。
 \end{itemize}
 
-\paragraph{}物理量名称、符号与计量单位的要求：
+物理量名称、符号与计量单位的要求：
 
 \begin{itemize}
 \item 论文中某一物理量的名称和符号应统一,一律采用国务院发布的《中华人民共和国法定计量单位》。单位名称和符号的书写方式,应采用国际通用符号。
@@ -205,7 +206,7 @@ xelatex main
 \item 物理量符号、物理量常量、变量符号用斜体,计量单位符号均用正体。
 \end{itemize}
 
-\paragraph{}数字的要求：
+数字的要求：
 
 \begin{itemize}
 \item 无特别约定情况下,一般均采用印度——阿拉伯数字表示。
@@ -214,7 +215,7 @@ xelatex main
 \item 统计符号的格式:一般除 μ、α、β、λ、ε 以及 V 等符号外,其余统计符号一律以斜体字呈现,如ANCOVA , ANOVA , MANOVA , N , nl , M , SD , F , p , r 等。
 \end{itemize}
 
-\paragraph{}公式的要求：
+公式的要求：
 
 \begin{itemize}
 \item 公式应另起一行写在稿纸中央。一行写不完的长公式,最好在等号处转行,如做不到这一点,可在运算符号(如“+”、“-”号)处转行,等号或运算符号应在转行后的行首。
@@ -222,7 +223,7 @@ xelatex main
 \item 文中引用某一公式时,写成“由式(16.20)”。
 \end{itemize}
 
-\paragraph{}表格的要求(表\ref{tab:skew}为一个也许不合格的例子)：
+表格的要求(表\ref{tab:skew}为一个也许不合格的例子)：
 
 \begin{itemize}
 \item 表格必须与论文叙述有直接联系,不得出现与论文叙述脱节的表格。表格中的内容在技术上不得与正文矛盾。
@@ -232,7 +233,7 @@ xelatex main
 \item 表格应放在离正文首次出现处最近的地方,不应超前和过分拖后。
 \end{itemize}
 
-\begin{table}
+\begin{table}[hbp]
 \caption{各个倾斜校正方法性能对比}
 \begin{tabular}{lrrrrr}
 \hline
@@ -250,7 +251,7 @@ xelatex main
 \label{tab:skew}
 \end{table}
 
-\paragraph{}图的要求(图\ref{fig:skew}为一个也许不合格的例子)：
+图的要求(图\ref{fig:skew}为一个也许不合格的例子)：
 
 \begin{itemize}
 \item 插图应与文字内容相符,技术内容正确。所有制图应符合国家标准和专业标准。对无规定符号的图形应采用该行业的常用画法。
@@ -294,11 +295,11 @@ xelatex main
 
 \section{取得成果}
 
-\paragraph{}一个大概不为人知的模版，可以认为对于人类无任何贡献。
+一个大概不为人知的模版，可以认为对于人类无任何贡献。
 
 \section{后续工作}
 
-\paragraph{}此模版有以下已知局限性：
+此模版有以下已知局限性：
 
 \begin{itemize}
 \item 篇末注只支持最多10个
@@ -317,18 +318,19 @@ xelatex main
 
 \appendix
 
-\chapter*{致谢}
+\begin{thankto}
 
 \songti\zihao{-4}
 %谢辞应以简短的文字对课题研究与论文撰写过程中曾直接给予帮助的人员(例如指导教师、答疑教师及其他人员)表示对自己的谢意,这不仅是一种礼貌,也是对他人劳动的尊重,是治学者应当遵循的学术规范。内容限一页。
 %以下为致谢内容
-\paragraph{}致谢内容
+致谢内容
 
 \vskip 18pt
 \begin{flushright}
 作者\\
 \today
 \end{flushright}
+\end{thankto}
 
 %对于一些不宜放在正文中的重要支撑材料,可编入毕业论文的附录中。包括某些重要的原始数据、详细数学推导、程序全文及其说明、复杂的图表、设计图纸等一系列需要补充提供的说明材料。如果毕业设计(论文)中引用的实例、数据资料,实验结果等符号较多时,为了节约篇幅,便于读者查阅,可以编写一个符号说明,注明符号代表的意义。附录的篇幅不宜太多,一般不超过正文。
 %接下来是附录部分，以\chapter{附录标题}开始一个新的附录

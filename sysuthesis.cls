@@ -1,11 +1,11 @@
-%这是中山大学本科毕业论文非官方模版0.0.2的一部分
+%这是中山大学本科毕业论文非官方模版0.0.1的一部分
 %维护者为陈颂光(1m02math@126.com)
 %任何人可以自由使用本文件
 %然而，无法保证它完全符合学校的相关要求，甚至不保证它可以正常编译
 %对于使用此模版造成的任何后果，维护者不负有任何责任
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{sysuthesis}
-	[2015/03/26 v0.0.2 Sun Yat-Sen University undergraduate thesis document class]
+	[2015/02/27 v0.0.1 Sun Yat-Sen University undergraduate thesis document class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
@@ -14,10 +14,11 @@
 \RequirePackage{calc}
 \RequirePackage{graphicx}
 \RequirePackage{amsmath,amssymb,amsthm}
-\RequirePackage{listings}%不需要代码时可把这行去掉
-\RequirePackage{subfig}%不需要把多个图放到一个浮动体时可把这行去掉
+\RequirePackage{listings}
+\RequirePackage{subfig}
 \RequirePackage{longtable}
 \RequirePackage{endnotes}
+\RequirePackage[section]{placeins}
 \RequirePackage[chinese,onelanguage,noline,noend,linesnumbered,algochapter]{algorithm2e}%不需要描述算法时把这行去掉
 \AtBeginDocument{\hypersetup{
 	colorlinks=true,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black,CJKbookmarks=true,xetex=true,
@@ -75,6 +76,8 @@
 \newcommand\cabstract[1]{\def\@cabstract{#1}}
 \newcommand\eabstract[1]{\def\@eabstract{#1}}
 
+\newtheoremstyle{dotless}{3pt}{3pt}{\normalfont}{}{\bfseries}{}{ }{}
+\theoremstyle{dotless}
 \newtheorem{theorem}{{定理}}[chapter]
 \newtheorem{proposition}{{命题}}[chapter]
 \newtheorem{lemma}{{引理}}[chapter]
@@ -129,7 +132,9 @@
 }
 
 \newcommand\openingreport{
+	\cleardoublepage
 	\CTEXsetup[titleformat={\zihao{-3}\fangsong\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={2.3ex plus .2ex}]{chapter}
 	\chapter*{毕业论文（设计）开题报告}
 	\zihao{-4}\songti
 	\begin{longtable}{|p{\textwidth}|}
@@ -143,10 +148,10 @@
 		\endlastfoot
 		论文(设计)题目:\@title
 		\\\hline
-		(简述选题的目的、思路、方法、相关支持条件及进度安排等)
+		(简述选题的目的、思路、方法、相关支持条件及进度安排等)\\
 		\@openingrep	
 		\\\hline
-		指导教师意见:\\\@openingopinion
+		指导教师意见:\@openingopinion
 		1、同意开题( ) 2、修改后开题( ) 3、重新开题( )\\\rule{0cm}{\baselineskip}\\
 		指导教师签名:\hfill 年\qquad 月\qquad 日\\\rule{0cm}{\baselineskip}\\
 	\end{longtable}
@@ -154,7 +159,9 @@
 
 
 \newcommand\progresscheck{
+	\cleardoublepage
 	\CTEXsetup[titleformat={\zihao{-3}\fangsong\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={2.3ex plus .2ex}]{chapter}
 	\chapter*{毕业论文（设计）过程检查情况记录表}
 	\zihao{-4}\songti
 	\begin{longtable}{|p{1.5\ccwd}|p{\textwidth - 1.5\ccwd}|}
@@ -208,7 +215,9 @@
 }
 
 \newcommand\record{
+	\cleardoublepage
 	\CTEXsetup[titleformat={\zihao{-3}\fangsong\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={2.3ex plus .2ex}]{chapter}
 	\chapter*{毕业论文(设计)答辩情况登记表}
 	\zihao{-4}\songti
 	\begin{tabular}{|c|c|c|c|}
@@ -217,7 +226,7 @@
 	论文（设计）题目 & \multicolumn{3}{c|}{\@title}\\\hline
 	答辩小组成员 & \multicolumn{3}{c|}{}\\\hline
 	\multicolumn{4}{|l|}{答辩记录：}\\
-	\multicolumn{4}{|l|}{\rule{0cm}{12cm}}\\
+	\multicolumn{4}{|l|}{\rule{0cm}{15cm}}\\
 	\multicolumn{4}{|p{\textwidth}|}{}\\
 	\multicolumn{4}{|l|}{记录人签名：\hspace{\fill} 年\qquad 月\qquad 日}
 	\\\hline
@@ -226,6 +235,7 @@
 
 \newcommand\disclaim{
 	\CTEXsetup[titleformat={\zihao{-2}\fangsong\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={50pt},afterskip={40pt}]{chapter}
 	\chapter*{学术诚信声明}
 	\zihao{4}\songti
 	\paragraph{}本人所呈交的毕业论文，是在导师的指导下，独立进行研究工作所取得的成果，所有数据、图片资料均真实可靠。除文中已经注明引用的内容外，本论文不包含任何其他人或集体已经发表或撰写过的作品或成果。对本论文的研究作出重要贡献的个人和集体，均已在文中以明确的方式标明。本毕业论文的知识产权归属于培养单位。本人完全意识到本声明的法律结果由本人承担。
@@ -234,27 +244,32 @@
 }
 
 \newcommand\makecabstract{
+	\cleardoublepage
 	\CTEXsetup[titleformat={\zihao{5}\heiti}]{chapter}
+	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={40pt}]{chapter}
 	\chapter*{摘要}
 	\zihao{5}
 	\kaishu
 	\@cabstract
-	\vspace{2\baselineskip}
+	\vspace{\baselineskip}
 	\paragraph{\heiti［关键词］}\kaishu\@keywords
 }
 
 \newcommand\makeeabstract{
+	\cleardoublepage
 	\CTEXsetup[titleformat={\zihao{-4}\rmfamily\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={40pt}]{chapter}
 	\chapter*{Abstract}
 	\zihao{-4}
 	\rmfamily
 	\@eabstract
-	\vspace{2\baselineskip}
+	\vspace{\baselineskip}
 	\paragraph{\textbf{[Key Words]}}\@ekeywords
 }
 
 \newcommand\grading{
-	\CTEXsetup[titleformat={\zihao{3}\fangsong}]{chapter}
+	\cleardoublepage
+	\CTEXsetup[titleformat={\zihao{3}\fangsong},beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={2.3ex plus .2ex}]{chapter}
 	\chapter*{毕业论文成绩评定记录}
 	\zihao{-4}\songti
 	\begin{longtable}{|p{\textwidth}|}
@@ -307,6 +322,7 @@
 	\makecabstract
 	\makeeabstract
 	\CTEXsetup[titleformat={\zihao{3}\songti\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={0pt},afterskip={40pt}]{chapter}
 }
 
 \renewcommand\mainmatter{
@@ -319,6 +335,7 @@
 		\fancyfoot{}
 		\fancyfoot[C]{\rmfamily\zihao{5}\thepage}
 	}
+	\CTEXsetup[beforeskip={0pt},afterskip={40pt}]{chapter}
 	\CTEXsetup[nameformat={\zihao{3}\songti\bfseries}]{chapter}
 	\CTEXsetup[titleformat={\zihao{3}\songti\bfseries}]{chapter}
 	\CTEXsetup[format={\centering}]{section}
@@ -343,6 +360,14 @@
 	\CTEXsetup[titleformat={\zihao{4}\heiti}]{chapter}
 	\CTEXsetup[nameformat={\zihao{4}\heiti}]{section}
 	\CTEXsetup[titleformat={\zihao{4}\heiti}]{section}
+}
+
+\newenvironment{thankto}{
+	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={40pt}]{chapter}
+	\chapter*{致谢}
+	\songti\zihao{-4}
+}{
+	\CTEXsetup[beforeskip={0pt},afterskip={40pt}]{chapter}
 }
 
 \renewcommand\backmatter{
