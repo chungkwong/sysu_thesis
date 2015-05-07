@@ -1064,7 +1064,6 @@ FUNCTION {standard}
   fin.entry
 }
 
-
 FUNCTION {inbook}
 { output.bibitem
   format.authors "author" output.check
@@ -1077,7 +1076,6 @@ FUNCTION {inbook}
       publisher empty$
         { format.organization.address output }
         { organization "organization" bibinfo.check output
-          format.publisher.address output
           format.publisher.address ":" * output
           no.blank.or.punct
         }

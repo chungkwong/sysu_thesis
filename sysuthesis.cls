@@ -1,15 +1,17 @@
-%这是中山大学本科毕业论文非官方模版0.0.1的一部分
+%这是中山大学本科毕业论文非官方模版0.0.4的一部分
 %维护者为陈颂光(1m02math@126.com)
 %任何人可以自由使用本文件
 %然而，无法保证它完全符合学校的相关要求，甚至不保证它可以正常编译
 %对于使用此模版造成的任何后果，维护者不负有任何责任
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{sysuthesis}
-	[2015/02/27 v0.0.1 Sun Yat-Sen University undergraduate thesis document class]
+	[2015/04/03 v0.0.3 Sun Yat-Sen University undergraduate thesis document class]
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
-\LoadClass[adobefonts,a4paper,openright,cs4size,fancyhdr,hyperref]{ctexbook}%在windows编译且希望使用微软的字体时请把adobefonts改为winfonts
+\LoadClass[adobefonts,a4paper,openright,cs4size,hyperref]{ctexbook}%在windows编译且希望使用微软的字体时请把adobefonts改为winfonts
+%\RequirePackage[margin=1in,outer=1.5in]{geometry}%启用此行可控制边距
+\RequirePackage{fancyhdr}
 \RequirePackage{tocloft}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
@@ -19,7 +21,11 @@
 \RequirePackage{longtable}
 \RequirePackage{endnotes}
 \RequirePackage[section]{placeins}
-\RequirePackage[chinese,onelanguage,noline,noend,linesnumbered,algochapter]{algorithm2e}%不需要描述算法时把这行去掉
+\RequirePackage[chinese,onelanguage,noline,noend,linesnumbered,algochapter,ruled,vlined]{algorithm2e}%不需要描述算法时把这行去掉
+%\RequirePackage{enumitem}%启用这行及下面三行可控制列表项目格式
+%\setlist[enumerate]{nosep}
+%\setlist[itemize]{nosep}
+%\setlist[description]{nosep}
 \AtBeginDocument{\hypersetup{
 	colorlinks=true,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black,CJKbookmarks=true,xetex=true,
 	pdftitle={\@title},
@@ -31,6 +37,9 @@
 \renewcommand{\footrulewidth}{0pt}
 \pagestyle{fancy}
 
+\setlength{\cftbeforetoctitleskip}{50pt}
+\setlength{\cftbeforelottitleskip}{50pt}
+\setlength{\cftbeforeloftitleskip}{50pt}
 \renewcommand{\cfttoctitlefont}{\hfill\zihao{3}\songti\bfseries}
 \renewcommand{\cftlottitlefont}{\hfill\zihao{3}\songti\bfseries}
 \renewcommand{\cftloftitlefont}{\hfill\zihao{3}\songti\bfseries}
@@ -49,6 +58,7 @@
 \renewcommand{\cftfigpagefont}{\zihao{-4}\songti}
 \renewcommand{\cfttabpagefont}{\zihao{-4}\songti}
 
+\newcommand\etitle[1]{\def\@etitle{#1}}
 \newcommand\authorx[1]{\def\@authorx{#1}}
 \newcommand\studentid[1]{\def\@studentid{#1}}
 \newcommand\school[1]{\def\@school{#1}}
@@ -83,12 +93,14 @@
 \newtheorem{lemma}{{引理}}[chapter]
 \newtheorem{corollary}{{推论}}[chapter]
 \newtheorem{definition}{{定义}}[chapter]
+\newtheorem{remark}{{注记}}[chapter]
 \newtheorem{eg}{例}[chapter]
 \renewcommand{\listfigurename}{插图目录}
 \renewcommand{\listtablename}{表格目录}
 \renewcommand{\proofname}{{\heiti 证明}}
-\renewcommand{\notesname}{{\zihao{-5}\heiti 注释：}}
-\renewcommand{\bibname}{参考文献：}
+\renewcommand{\notesname}{{\zihao{-5}\heiti 注释：\hfill}}
+\renewcommand{\bibname}{{\zihao{-5}\heiti 参考文献：}}
+\renewcommand{\@biblabel}[1]{[#1]\hfill}
 \renewenvironment{proof}[1][\proofname]{\par
   \pushQED{\qed}
   \normalfont \topsep6\p@\@plus6\p@\relax
@@ -135,7 +147,7 @@
 	\cleardoublepage
 	\CTEXsetup[titleformat={\zihao{-3}\fangsong\bfseries}]{chapter}
 	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={2.3ex plus .2ex}]{chapter}
-	\chapter*{毕业论文（设计）开题报告}
+	\chapter*{表一\hspace{\ccwd}毕业论文（设计）开题报告}
 	\zihao{-4}\songti
 	\begin{longtable}{|p{\textwidth}|}
 		\hline
@@ -151,7 +163,8 @@
 		(简述选题的目的、思路、方法、相关支持条件及进度安排等)\\
 		\@openingrep	
 		\\\hline
-		指导教师意见:\@openingopinion
+		指导教师意见:\\
+		\@openingopinion\\
 		1、同意开题( ) 2、修改后开题( ) 3、重新开题( )\\\rule{0cm}{\baselineskip}\\
 		指导教师签名:\hfill 年\qquad 月\qquad 日\\\rule{0cm}{\baselineskip}\\
 	\end{longtable}
@@ -162,7 +175,7 @@
 	\cleardoublepage
 	\CTEXsetup[titleformat={\zihao{-3}\fangsong\bfseries}]{chapter}
 	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={2.3ex plus .2ex}]{chapter}
-	\chapter*{毕业论文（设计）过程检查情况记录表}
+	\chapter*{表二\hspace{\ccwd}毕业论文（设计）过程检查情况记录表}
 	\zihao{-4}\songti
 	\begin{longtable}{|p{1.5\ccwd}|p{\textwidth - 1.5\ccwd}|}
 		\hline
@@ -174,43 +187,36 @@
 		\hline
 		\endlastfoot
 		\multicolumn{2}{|l|}{指导教师分阶段检查论文的进展情况（要求过程检查记录不少于3次）：}\\
-		\multicolumn{2}{|l|}{\heiti 第1次检查}\\
-		\multicolumn{2}{|l|}{学生总结：}\\
-		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@firstcheck}}\\
-		\multicolumn{2}{|l|}{指导教师意见：}\\
-		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@firstopinion}}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{{\bfseries 第1次检查}\\学生总结：\\\@firstcheck}}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
-		\multicolumn{2}{|l|}{\heiti 第2次检查}\\
-		\multicolumn{2}{|l|}{学生总结：}\\
-		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@secondcheck}}\\
-		\multicolumn{2}{|l|}{指导教师意见：}\\
-		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@secondopinion}}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{指导教师意见：\\\@firstopinion}}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
-		\multicolumn{2}{|l|}{\heiti 第3次检查}\\
-		\multicolumn{2}{|l|}{学生总结：}\\
-		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@thirdcheck}}\\
-		\multicolumn{2}{|l|}{指导教师意见：}\\
-		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@thirdopinion}}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{{\bfseries 第2次检查}\\学生总结：\\\@secondcheck}}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
-		\multicolumn{2}{|l|}{\heiti 第4次检查}\\
-		\multicolumn{2}{|l|}{学生总结：}\\
-		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@forthcheck}}\\
-		\multicolumn{2}{|l|}{指导教师意见：}\\
-		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{\@forthopinion}}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{指导教师意见：\\\@secondopinion}}\\
+		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{{\bfseries 第3次检查}\\学生总结：\\\@thirdcheck}}\\
+		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{指导教师意见：\\\@thirdopinion}}\\
+		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{{\bfseries 第4次检查}\\学生总结：\\\@forthcheck}}\\
+		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
+		\multicolumn{2}{|l|}{\parbox{\textwidth - 1.5\ccwd}{指导教师意见：\\\@forthopinion}}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
 		\multicolumn{2}{|l|}{学生签名：\hfill 年\qquad 月\qquad 日}\\
 		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
 		\multicolumn{2}{|l|}{指导教师签名：\hfill 年\qquad 月\qquad 日}\\
+		\multicolumn{2}{|l|}{\rule{0cm}{\baselineskip}}\\
 		\hline
-		{\heiti 总体完成情况}& 指导教师意见：\\
+		{\bfseries 总体完成情况}& 指导教师意见：\\
 		& \@overallopinion\\
 		& 1、按计划完成，完成情况优（ ）\\
 		& 2、按计划完成，完成情况良（ ）\\
 		& 3、基本按计划完成，完成情况合格（ ）\\
 		& 4、完成情况不合格（ ）\\
 		& \rule{0cm}{\baselineskip}\\
-		& 指导教师签名：\hfill 年\qquad 月\qquad 日
-		\\
+		& 指导教师签名：\hfill 年\qquad 月\qquad 日\\
+		& \rule{0cm}{\baselineskip}\\
 	\end{longtable}
 }
 
@@ -218,7 +224,7 @@
 	\cleardoublepage
 	\CTEXsetup[titleformat={\zihao{-3}\fangsong\bfseries}]{chapter}
 	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={2.3ex plus .2ex}]{chapter}
-	\chapter*{毕业论文(设计)答辩情况登记表}
+	\chapter*{表三\hspace{\ccwd}毕业论文(设计)答辩情况登记表}
 	\zihao{-4}\songti
 	\begin{tabular}{|c|c|c|c|}
 	\hline
@@ -226,9 +232,10 @@
 	论文（设计）题目 & \multicolumn{3}{c|}{\@title}\\\hline
 	答辩小组成员 & \multicolumn{3}{c|}{}\\\hline
 	\multicolumn{4}{|l|}{答辩记录：}\\
-	\multicolumn{4}{|l|}{\rule{0cm}{15cm}}\\
+	\multicolumn{4}{|l|}{\rule{0cm}{16cm}}\\
 	\multicolumn{4}{|p{\textwidth}|}{}\\
-	\multicolumn{4}{|l|}{记录人签名：\hspace{\fill} 年\qquad 月\qquad 日}
+	\multicolumn{4}{|l|}{记录人签名：\hspace{\fill} 年\qquad 月\qquad 日}\\
+	\multicolumn{4}{|l|}{\rule{0cm}{\baselineskip}}
 	\\\hline
 	\end{tabular}
 }
@@ -238,33 +245,39 @@
 	\CTEXsetup[beforeskip={50pt},afterskip={40pt}]{chapter}
 	\chapter*{学术诚信声明}
 	\zihao{4}\songti
-	\paragraph{}本人所呈交的毕业论文，是在导师的指导下，独立进行研究工作所取得的成果，所有数据、图片资料均真实可靠。除文中已经注明引用的内容外，本论文不包含任何其他人或集体已经发表或撰写过的作品或成果。对本论文的研究作出重要贡献的个人和集体，均已在文中以明确的方式标明。本毕业论文的知识产权归属于培养单位。本人完全意识到本声明的法律结果由本人承担。
+	
+	本人所呈交的毕业论文，是在导师的指导下，独立进行研究工作所取得的成果，所有数据、图片资料均真实可靠。除文中已经注明引用的内容外，本论文不包含任何其他人或集体已经发表或撰写过的作品或成果。对本论文的研究作出重要贡献的个人和集体，均已在文中以明确的方式标明。本毕业论文的知识产权归属于培养单位。本人完全意识到本声明的法律结果由本人承担。
 	\vspace{3\baselineskip}
-	\paragraph{}本人签名：\hfill 日期：\qquad\qquad\qquad\qquad
+	
+	本人签名：\hfill 日期：\qquad\qquad\qquad\qquad
 }
 
 \newcommand\makecabstract{
 	\cleardoublepage
-	\CTEXsetup[titleformat={\zihao{5}\heiti}]{chapter}
-	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={40pt}]{chapter}
-	\chapter*{摘要}
+	\CTEXsetup[titleformat={\zihao{3}\songti\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={50pt},afterskip={40pt}]{chapter}%-3.5ex plus -1ex minus -.2ex
+	\chapter*{\@title}
 	\zihao{5}
 	\kaishu
+	\paragraph{\normalfont\zihao{5}\heiti［论文摘要］}\mbox{}
+	
 	\@cabstract
 	\vspace{\baselineskip}
-	\paragraph{\heiti［关键词］}\kaishu\@keywords
+	\paragraph{\normalfont\zihao{5}\heiti［关键词］}\kaishu\@keywords
 }
 
 \newcommand\makeeabstract{
 	\cleardoublepage
-	\CTEXsetup[titleformat={\zihao{-4}\rmfamily\bfseries}]{chapter}
-	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={40pt}]{chapter}
-	\chapter*{Abstract}
+	\CTEXsetup[titleformat={\zihao{3}\songti\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={50pt},afterskip={40pt}]{chapter}%-3.5ex plus -1ex minus -.2ex
+	\chapter*{\@etitle}
 	\zihao{-4}
 	\rmfamily
+	\paragraph{\normalfont\zihao{-4}\textbf{[Abstract]}}\mbox{}
+	
 	\@eabstract
 	\vspace{\baselineskip}
-	\paragraph{\textbf{[Key Words]}}\@ekeywords
+	\paragraph{\normalfont\zihao{-4}\textbf{[Key Words]}}\@ekeywords
 }
 
 \newcommand\grading{
@@ -296,6 +309,8 @@
 }
 
 \newcommand\displayendnotes{
+	\CTEXsetup[format={}]{chapter}
+	\CTEXsetup[titleformat={\zihao{-5}\heiti}]{chapter}
 	\cleardoublepage
 	\begingroup
 	\parindent 0pt
@@ -303,7 +318,6 @@
 	\def\enotesize{\songti\zihao{-5}}
 	\theendnotes
 	\endgroup
-	\CTEXsetup[titleformat={\zihao{-5}\heiti}]{chapter}
 }
 
 \renewcommand\frontmatter{
@@ -322,7 +336,7 @@
 	\makecabstract
 	\makeeabstract
 	\CTEXsetup[titleformat={\zihao{3}\songti\bfseries}]{chapter}
-	\CTEXsetup[beforeskip={0pt},afterskip={40pt}]{chapter}
+	\CTEXsetup[beforeskip={50pt},afterskip={40pt}]{chapter}
 }
 
 \renewcommand\mainmatter{
@@ -335,13 +349,13 @@
 		\fancyfoot{}
 		\fancyfoot[C]{\rmfamily\zihao{5}\thepage}
 	}
-	\CTEXsetup[beforeskip={0pt},afterskip={40pt}]{chapter}
-	\CTEXsetup[nameformat={\zihao{3}\songti\bfseries}]{chapter}
-	\CTEXsetup[titleformat={\zihao{3}\songti\bfseries}]{chapter}
+	\CTEXsetup[beforeskip={50pt},afterskip={40pt}]{chapter}
+	\CTEXsetup[nameformat={\zihao{4}\heiti}]{chapter}
+	\CTEXsetup[titleformat={\zihao{4}\heiti}]{chapter}
 	\CTEXsetup[format={\centering}]{section}
 	\CTEXsetup[nameformat={\zihao{4}\heiti}]{section}
 	\CTEXsetup[titleformat={\zihao{4}\heiti}]{section}
-	\CTEXsetup[format={\centering}]{subsection}
+	\CTEXsetup[format={}]{subsection}
 	\CTEXsetup[nameformat={\zihao{4}\heiti}]{subsection}
 	\CTEXsetup[titleformat={\zihao{4}\heiti}]{subsection}
 	\zihao{-4}
@@ -356,18 +370,23 @@
 	\gdef\CTEX@prechapter{\CTEX@appendixname}
 	\gdef\CTEX@thechapter{\CTEX@appendixnumber}
 	\gdef\CTEX@postchapter{}
+	\CTEXsetup[format={\centering}]{chapter}
 	\CTEXsetup[nameformat={\zihao{4}\heiti}]{chapter}
 	\CTEXsetup[titleformat={\zihao{4}\heiti}]{chapter}
+	\CTEXsetup[format={\centering}]{section}
 	\CTEXsetup[nameformat={\zihao{4}\heiti}]{section}
 	\CTEXsetup[titleformat={\zihao{4}\heiti}]{section}
+	\CTEXsetup[format={}]{subsection}
+	\CTEXsetup[nameformat={\zihao{4}\heiti}]{subsection}
+	\CTEXsetup[titleformat={\zihao{4}\heiti}]{subsection}
 }
 
 \newenvironment{thankto}{
-	\CTEXsetup[beforeskip={-3.5ex plus -1ex minus -.2ex},afterskip={40pt}]{chapter}
+	\CTEXsetup[beforeskip={50pt},afterskip={40pt}]{chapter}%-3.5ex plus -1ex minus -.2ex
 	\chapter*{致谢}
 	\songti\zihao{-4}
 }{
-	\CTEXsetup[beforeskip={0pt},afterskip={40pt}]{chapter}
+	\CTEXsetup[beforeskip={50pt},afterskip={40pt}]{chapter}
 }
 
 \renewcommand\backmatter{

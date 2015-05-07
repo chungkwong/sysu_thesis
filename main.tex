@@ -1,5 +1,5 @@
 ﻿\documentclass{sysuthesis}
-%这是中山大学本科毕业论文非官方模版0.0.2的一部分
+%这是中山大学本科毕业论文非官方模版0.0.4的一部分
 %维护者为陈颂光(1m02math@126.com)
 %任何人可以自由使用本文件
 %然而，无法保证它完全符合学校的相关要求，甚至不保证它可以正常编译
@@ -7,6 +7,7 @@
 
 %论文题目应以简短、明确的词语恰当概括整个论文的核心内容,避免使用不常见的缩略词、缩写字。读者通过标题可大致了解毕业设计(论文)的内容、专业的特点和科学的范畴。中文题目一般不宜超过 24 个字,必要时可增加副标题。外文题目一般不宜超过 12 个实词。
 \title{中山大学本科毕业论文非官方模版}%论文题目
+\etitle{Template for Undergraduate Thesis in SYSU}%英文论文题目
 \author{陈颂光}%作者
 \authorx{陈\ 颂\ 光}%封面上作者（各字符间可加空白）
 \date{二〇一五年五月}%完成日期
@@ -15,7 +16,7 @@
 \major{数学与应用数学}%专业
 \mentor{老师姓名（职称）}%指导老师
 %关键词是供检索用的主题词条(3—5 个),应采用能覆盖论文主要内容的通用技术词条(参照相应的技术术语标准)。按词条的外延层次排列(外延大的排在前面)。
-\keywords{排版; 毕业论文; 模版}%中文关键词(每个关键词之间用“;”分开,最后一个关键词不打标点符号。)
+\keywords{排版；毕业论文；模版}%中文关键词(每个关键词之间用“;”分开,最后一个关键词不打标点符号。)
 \ekeywords{typeset; thesis; template}%英文关键词
 \openingopinion{\rule{0cm}{6\baselineskip}}%开题报告中指导老师意见
 \firstcheck{\rule{0cm}{6\baselineskip}}%第一次过程检查的学生总结
@@ -123,6 +124,7 @@ xelatex main
 
 \begin{itemize}
 \item {\ttfamily ctex}
+\item {\ttfamily tocloft}
 \item {\ttfamily calc}
 \item {\ttfamily graphicx}
 \item {\ttfamily amsmath}
@@ -235,6 +237,7 @@ xelatex main
 
 \begin{table}[hbp]
 \caption{各个倾斜校正方法性能对比}
+\centering
 \begin{tabular}{lrrrrr}
 \hline
 & 成功返回率 & 平均误差& 均方误差& 误差中位数& 运行时间中位数\\
