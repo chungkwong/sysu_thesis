@@ -10,7 +10,7 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions\relax
 \LoadClass[adobefonts,a4paper,openright,cs4size,hyperref]{ctexbook}%在windows编译且希望使用微软的字体时请把adobefonts改为winfonts
-%\RequirePackage[margin=1in,outer=1.5in]{geometry}%启用此行可控制边距
+\RequirePackage[margin=1in,outer=1.5in]{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{tocloft}
 \RequirePackage{calc}
@@ -22,10 +22,10 @@
 \RequirePackage{endnotes}
 \RequirePackage[section]{placeins}
 \RequirePackage[chinese,onelanguage,noline,noend,linesnumbered,algochapter,ruled,vlined]{algorithm2e}%不需要描述算法时把这行去掉
-%\RequirePackage{enumitem}%启用这行及下面三行可控制列表项目格式
-%\setlist[enumerate]{nosep}
-%\setlist[itemize]{nosep}
-%\setlist[description]{nosep}
+\RequirePackage{enumitem}
+\setlist[enumerate]{nosep}
+\setlist[itemize]{nosep}
+\setlist[description]{nosep}
 \AtBeginDocument{\hypersetup{
 	colorlinks=true,citecolor=black,filecolor=black,linkcolor=black,urlcolor=black,CJKbookmarks=true,xetex=true,
 	pdftitle={\@title},
@@ -161,12 +161,14 @@
 		论文(设计)题目:\@title
 		\\\hline
 		(简述选题的目的、思路、方法、相关支持条件及进度安排等)\\
-		\@openingrep	
+		\@openingrep	\\
+		\\
+		\hspace{2\ccwd}学生签名：\hfill 年\qquad 月\qquad 日\\
 		\\\hline
 		指导教师意见:\\
 		\@openingopinion\\
 		1、同意开题( ) 2、修改后开题( ) 3、重新开题( )\\\rule{0cm}{\baselineskip}\\
-		指导教师签名:\hfill 年\qquad 月\qquad 日\\\rule{0cm}{\baselineskip}\\
+		\hspace{2\ccwd}指导教师签名:\hfill 年\qquad 月\qquad 日\\\rule{0cm}{\baselineskip}\\
 	\end{longtable}
 }
 
